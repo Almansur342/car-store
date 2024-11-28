@@ -3,7 +3,7 @@ import { carValidationSchema } from './car.validation';
 import { CarServices } from './car.service';
 import { z } from 'zod';
 
-const createCar = async (req: Request, res: Response): Promise<Response> => {
+const createCar = async (req: Request, res: Response) => {
   try {
     const { cars: carData } = req.body;
     const zodParseData = carValidationSchema.parse(carData);
@@ -28,6 +28,43 @@ const createCar = async (req: Request, res: Response): Promise<Response> => {
   }
 };
 
+const getAllCars = async (req: Request, res: Response) => {
+  try {
+    const result = await CarServices.getCarFromDB();
+    res.status(200).json({
+      success: true,
+      message: 'cars retrieved successfully',
+      data: result,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Failed to reetrieve cars',
+      error: err,
+    });
+  }
+};
+
+const getSingleCar = async (req: Request, res: Response) => {
+  try {
+    const { carId } = req.params;
+    const result = await CarServices.getSingleCarFromDB(carId);
+    res.status(200).json({
+      success: true,
+      message: 'cars retrieved successfully',
+      data: result,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Failed to reetrieve cars',
+      error: err,
+    });
+  }
+};
+
 export const CarController = {
   createCar,
+  getAllCars,
+  getSingleCar,
 };
