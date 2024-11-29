@@ -16,8 +16,24 @@ const getSingleCarFromDB = async (id: string) => {
   return result;
 };
 
+const updateSingleCarInDB = async (id: string, updateData: Partial<Car>) => {
+  const result = await CarModel.findByIdAndUpdate(
+    id,
+    { $set: updateData },
+    { new: true },
+  );
+  return result;
+};
+
+const deleteSingleCarFromDB = async (id: string) => {
+  const result = await CarModel.findByIdAndDelete(id);
+  return result;
+};
+
 export const CarServices = {
   createCarIntoDB,
   getCarFromDB,
   getSingleCarFromDB,
+  updateSingleCarInDB,
+  deleteSingleCarFromDB,
 };
