@@ -61,7 +61,7 @@ const getSingleCar = async (req: Request, res: Response) => {
     }
     res.status(200).json({
       success: true,
-      message: 'cars retrieved successfully',
+      message: 'car retrieved successfully',
       data: result,
     });
   } catch (err) {
@@ -82,14 +82,14 @@ const updateSingleCar = async (req: Request, res: Response) => {
       .safeParse(updateData);
     if (!zodParseUpdateData || Object.keys(zodParseUpdateData).length == 0) {
       return res.status(400).json({
-        success: false,
+        status: false,
         message: 'No update data provided',
       });
     }
     const result = await CarServices.updateSingleCarInDB(carId, updateData);
     res.status(200).json({
       success: true,
-      message: 'cars info updated successfully',
+      message: 'car info updated successfully',
       data: result,
     });
   } catch (err) {
@@ -106,10 +106,16 @@ const deleteSingleCar = async (req: Request, res: Response) => {
   try {
     const { carId } = req.params;
     const result = await CarServices.deleteSingleCarFromDB(carId);
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: 'Car not found',
+      });
+    }
     res.status(200).json({
-      success: true,
-      message: 'cars  deleted successfully',
-      data: result,
+      status: true,
+      message: 'car  deleted successfully',
+      data: {},
     });
   } catch (err) {
     res.status(500).json({
