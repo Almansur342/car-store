@@ -50,7 +50,6 @@ The purpose of this project is to develop a scalable and efficient **Car Store**
 | **ESLint**     | Linter for code quality checks.                 |
 | **Prettier**   | Code formatter for clean and readable code.     |
 | **Nodemon**    | Auto-restarts the server during development.    |
-| **Axios**      | HTTP client for API testing.                    |
 | **Postman**    | API testing and debugging tool.                 |
 
 ---
@@ -69,3 +68,7 @@ The purpose of this project is to develop a scalable and efficient **Car Store**
    git clone <repository-url>
    cd car-store
    ```
+2. **Install using npm**
+    ```bash
+    npm i
+    ```
