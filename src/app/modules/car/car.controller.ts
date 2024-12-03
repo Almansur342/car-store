@@ -3,6 +3,7 @@ import { carValidationSchema } from './car.validation';
 import { CarServices } from './car.service';
 import { z } from 'zod';
 
+//create car;
 const createCar = async (req: Request, res: Response) => {
   try {
     const carData = req.body;
@@ -28,6 +29,7 @@ const createCar = async (req: Request, res: Response) => {
   }
 };
 
+//get all cars
 const getAllCars = async (req: Request, res: Response) => {
   try {
     const result = await CarServices.getCarFromDB();
@@ -44,6 +46,8 @@ const getAllCars = async (req: Request, res: Response) => {
     });
   }
 };
+
+//get single car
 
 const getSingleCar = async (req: Request, res: Response) => {
   try {
@@ -97,6 +101,7 @@ const updateSingleCar = async (req: Request, res: Response) => {
   }
 };
 
+//delete car
 const deleteSingleCar = async (req: Request, res: Response) => {
   try {
     const { carId } = req.params;

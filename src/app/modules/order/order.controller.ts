@@ -4,6 +4,7 @@ import { CarModel } from '../car.model';
 import { OrderService } from './order.service';
 import mongoose from 'mongoose';
 
+//create order
 const createOrder = async (req: Request, res: Response) => {
   try {
     const orderData = req.body;
@@ -60,6 +61,7 @@ const createOrder = async (req: Request, res: Response) => {
   }
 };
 
+//get the revenue fron the order
 const getTheRevenue = async (req: Request, res: Response) => {
   try {
     const revenue = await OrderService.getTheRevenueFromDB();

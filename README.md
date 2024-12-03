@@ -69,6 +69,6 @@ The purpose of this project is to develop a scalable and efficient **Car Store**
    cd car-store
    ```
 2. **Install using npm**
-    ```bash
-    npm i
-    ```
+   ```bash
+   npm i
+   ```
