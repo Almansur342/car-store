@@ -74,5 +74,5 @@ The purpose of this project is to develop a scalable and efficient **Car Store**
    ```
 3. ## Live Demo
    ```bash
-   [Live link](https://car-store-project-tan.vercel.app/).   
-   ```
+   https://car-store-project-tan.vercel.app/  
+   ``` 
